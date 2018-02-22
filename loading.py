@@ -2,7 +2,7 @@
 # @Author: youralien
 # @Date:   2018-02-21 21:57:22
 # @Last Modified by:   youralien
-# @Last Modified time: 2018-02-21 23:33:46
+# @Last Modified time: 2018-02-22 01:33:06
 
 import os
 import codecs
@@ -28,4 +28,12 @@ def loadtweetsdf(path=None, sort=True):
     df['likes'] = pd.to_numeric(df['likes'])
     df['retweets'] = pd.to_numeric(df['retweets'])
     df['timestamp'] = pd.to_datetime(df['timestamp'])
+    return df
+
+
+def loadredditpostsdf(path=None, sort=True):
+    if not path:
+        directory = os.path.dirname(os.path.realpath(__file__))
+        path = os.path.join(directory, 'redditposts.csv')
+    df = pd.read_csv(path)
     return df

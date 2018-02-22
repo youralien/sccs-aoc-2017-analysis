@@ -2,7 +2,7 @@
 # @Author: youralien
 # @Date:   2018-02-21 22:10:45
 # @Last Modified by:   youralien
-# @Last Modified time: 2018-02-21 23:47:49
+# @Last Modified time: 2018-02-22 01:21:37
 
 
 def unique_users(df):
@@ -32,3 +32,9 @@ def reply_noreply_dfs(df, remove_outliers=True):
     if remove_outliers:
         reply = reply[reply['replies'] < 50]
     return reply, noreply
+
+
+def twitter_upvotes(df):
+    """ basically just add retweets + like counts for comparison"""
+    df['upvotes'] = df['retweets'] + df['likes']
+    return df
