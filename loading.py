@@ -2,7 +2,7 @@
 # @Author: youralien
 # @Date:   2018-02-21 21:57:22
 # @Last Modified by:   youralien
-# @Last Modified time: 2018-02-21 22:32:13
+# @Last Modified time: 2018-02-21 23:33:46
 
 import os
 import codecs
@@ -23,4 +23,9 @@ def loadtweets(path=None, sort=True):
 
 
 def loadtweetsdf(path=None, sort=True):
-    return pd.DataFrame(loadtweets(path, sort))
+    df = pd.DataFrame(loadtweets(path, sort))
+    df['replies'] = pd.to_numeric(df['replies'])
+    df['likes'] = pd.to_numeric(df['likes'])
+    df['retweets'] = pd.to_numeric(df['retweets'])
+    df['timestamp'] = pd.to_datetime(df['timestamp'])
+    return df

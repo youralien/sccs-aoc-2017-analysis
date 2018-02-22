@@ -2,7 +2,7 @@
 # @Author: youralien
 # @Date:   2018-02-21 22:10:45
 # @Last Modified by:   youralien
-# @Last Modified time: 2018-02-21 23:02:24
+# @Last Modified time: 2018-02-21 23:47:49
 
 
 def unique_users(df):
@@ -26,7 +26,9 @@ def sort_by_highest_number_replies(df, ascending=True):
     return df.sort_values('replies', ascending=ascending)
 
 
-def get_reply_noreply_dfs(df):
-    return (
-        df[df['replies'] == '0'],   # 4629
-        df[df['replies'] != '0'])   # 1147
+def reply_noreply_dfs(df, remove_outliers=True):
+    reply = df[df['replies'] != 0]      # 1147
+    noreply = df[df['replies'] == 0]    # 4629
+    if remove_outliers:
+        reply = reply[reply['replies'] < 50]
+    return reply, noreply
