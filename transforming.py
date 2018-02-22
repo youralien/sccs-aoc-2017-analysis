@@ -2,7 +2,7 @@
 # @Author: youralien
 # @Date:   2018-02-21 22:10:45
 # @Last Modified by:   youralien
-# @Last Modified time: 2018-02-21 22:54:28
+# @Last Modified time: 2018-02-21 23:02:24
 
 
 def unique_users(df):
@@ -23,7 +23,7 @@ def num_tweets_per_unique_user(df):
 
 
 def sort_by_highest_number_replies(df, ascending=True):
-    return df.sort_values('replies', ascending)
+    return df.sort_values('replies', ascending=ascending)
 
 
 def get_reply_noreply_dfs(df):
